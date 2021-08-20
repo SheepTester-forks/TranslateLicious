@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "obfuscate": "terser -cm --toplevel main.js > main.min.js && postcss styles.css > styles.min.css && sed 's/\\(styles\\|main\\)\\.\\(css\\|js\\)/\\1.min.\\2/g' index.php > index.min.php"
+    "obfuscate": "terser -cm --toplevel main.js > main.min.js && postcss styles.css > styles.min.css && sed 's/\\(styles\\|main\\)\\.\\(css\\|js\\)/\\1.min.\\2/g' index.html > index.min.php",
+    "rename": "for file in *.js; do cp $file $file.txt; done; for file in *.php; do cp $file $file.html; done"
   },
   "devDependencies": {
     "cssnano": "^5.0.8",

@@ -1,34 +1,75 @@
 const languages = {
-  ar: ['ar', 'arb'],
-  'zh-cn': ['zh-tw', 'cmn-CN'],
-  da: ['da', 'da-DK'],
-  nl: ['nl', 'nl-NL'],
-  en: ['en', 'en-US'],
-  fr: ['fr', 'fr-FR'],
-  de: ['de', 'de-DE'],
-  is: ['is', 'is-IS'],
-  it: ['it', 'it-IT'],
-  ja: ['ja', 'ja-JP'],
-  ko: ['ko', 'ko-KR'],
-  nb: ['nb', 'nb-NO'],
-  pl: ['pl', 'pl-PL'],
-  pt: ['pt', 'pt-PT'],
-  ro: ['ro', 'ro-RO'],
-  ru: ['ru', 'ru-RU'],
-  es: ['es', 'es-ES'],
-  sv: ['sv', 'sv-SE'],
-  tr: ['tr', 'tr-TR'],
-  cy: ['cy', 'cy-GB'],
-  ca: ['ca', 'ca-CA']
+  am: ['am', null],
+  ar: ['ar', 'ar'],
+  az: ['az', null],
+  bg: ['bg', null],
+  ca: ['ca', null],
+  cs: ['cs', null],
+  cy: ['cy', 'cy'],
+  da: ['da', 'da'],
+  de: ['de', 'de'],
+  el: ['el', null],
+  en: ['en', 'en'],
+  es: ['es', 'es'],
+  'es-419': ['es-419', 'es-419'],
+  et: ['et', null],
+  eu: ['eu', null],
+  fa: ['fa', null],
+  fi: ['fi', null],
+  fr: ['fr', 'fr'],
+  ga: ['ga', null],
+  gd: ['gd', null],
+  gl: ['gl', null],
+  he: ['he', null],
+  hi: ['hi', 'hi'],
+  hr: ['hr', null],
+  hu: ['hu', null],
+  id: ['id', null],
+  is: ['is', 'is'],
+  it: ['it', 'it'],
+  ja: ['ja', 'ja'],
+  ko: ['ko', 'ko'],
+  lt: ['lt', null],
+  lv: ['lv', null],
+  mi: ['mi', null],
+  nb: ['nb', 'nb'],
+  nl: ['nl', 'nl'],
+  pl: ['pl', 'pl'],
+  pt: ['pt', 'pt'],
+  'pt-br': ['pt-br', 'pt-br'],
+  ro: ['ro', 'ro'],
+  ru: ['ru', 'ru'],
+  sk: ['sk', null],
+  sl: ['sl', null],
+  sr: ['sr', null],
+  sv: ['sv', 'sv'],
+  th: ['th', null],
+  tr: ['tr', 'tr'],
+  uk: ['uk', null],
+  vi: ['vi', null],
+  'zh-cn': ['zh-cn', 'zh-cn'],
+  'zh-tw': ['zh-tw', null],
+  zu: ['zu', null]
 }
 
 // Tell the browser to prepare the list of voices early
 speechSynthesis.getVoices()
 
-function handleSpeech (speechBtn, textarea, language) {
+function handleSpeech (
+  speechBtn,
+  textarea,
+  language,
+  optionsWrapper,
+  pitch,
+  rate
+) {
+  optionsWrapper.style.display = 'none'
   speechBtn.addEventListener('click', () => {
-    let locale = languages[language.value][1]
-
+    const locale = languages[language.value][1]
+    if (locale === null) {
+      alert('tts is unavailable for languages that are not in the list')
+      return
+    }
     const audio = new Audio()
     audio.src =
       'https://synthesis-service.scratch.mit.edu/synth?' +
@@ -40,9 +81,6 @@ function handleSpeech (speechBtn, textarea, language) {
     audio.controls = true
     textarea.parentNode.append(audio)
 
-    if (locale === 'cmn-CN') {
-      locale = 'zh-TW'
-    }
     const voice = speechSynthesis
       .getVoices()
       .find(
@@ -52,7 +90,12 @@ function handleSpeech (speechBtn, textarea, language) {
     const utterance = new SpeechSynthesisUtterance(textarea.value)
     utterance.lang = locale
     utterance.voice = voice
+    utterance.pitch = pitch.value
+    utterance.rate = rate.value
+    console.log(utterance)
     window.speechSynthesis.speak(utterance)
+
+    optionsWrapper.style.display = null
   })
 }
 
@@ -71,12 +114,18 @@ document.getElementById('translate').addEventListener('click', async () => {
 handleSpeech(
   document.getElementById('source-speech'),
   document.getElementById('source'),
-  document.getElementById('source-language')
+  document.getElementById('source-language'),
+  document.getElementById('source-speech-synthesis-options'),
+  document.getElementById('source-pitch'),
+  document.getElementById('source-rate')
 )
 handleSpeech(
   document.getElementById('translated-speech'),
   document.getElementById('translated'),
-  document.getElementById('target-language')
+  document.getElementById('target-language'),
+  document.getElementById('translated-speech-synthesis-options'),
+  document.getElementById('translated-pitch'),
+  document.getElementById('translated-rate')
 )
 
 var video = document.getElementById('myVideo')

@@ -1,1 +1,7 @@
 node_modules
+
+# For previewing in the browser
+*.php.html
+
+# For sending JS through Gmail
+*.js.txt
