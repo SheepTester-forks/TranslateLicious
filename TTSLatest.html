@@ -9,30 +9,22 @@
 
     <style>
       html {
-        min-height: 100%;
+        height: 100%;
       }
       @media (prefers-color-scheme: dark) {
         :root {
           color-scheme: dark;
         }
       }
-      
-      * {
-  box-sizing: border-box;
-}
 
       body {
         min-height: 100%;
         display: flex;
         flex-direction: column;
         margin: 0;
-        padding: 5px;
         gap: 20px;
         box-sizing: border-box;
-        overflow-hidden {
-		overflow: scroll;
-	}
-        <!--background-image: url('https://cdn.pixabay.com/photo/2021/03/12/08/48/translate-6089103_1280.png');-->
+        text-align: center;
       }
       .container {
         display: flex;
@@ -60,249 +52,247 @@
       }
       .icon {
         width: 36px;
-        height:36px;
+        height: 36px;
       }
       h1 {
         margin: 0;
       }
-    </style>
-<style>
-#myVideo {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-  
-}
+      #myVideo {
+        position: fixed;
+        z-index: -1;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+      }
 
-.content {
-  position: fixed;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
-  width: 100%;
-  padding: 0px;
-  min-height:100%;
-}
+      .content {
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        padding: 5px;
+        flex: auto;
+      }
 
-img {
-  border-radius: 50%;
-}
+      img {
+        border-radius: 50%;
+      }
 
-#myBtn {
-  width: 200px;
-  font-size: 18px;
-  padding: 10px;
-  border: none;
-  background: #000;
-  color: #fff;
-  cursor: pointer;
-}
+      #myBtn {
+        width: 200px;
+        font-size: 18px;
+        padding: 10px;
+        border: none;
+        background: #000;
+        color: #fff;
+        cursor: pointer;
+      }
 
-#myBtn:hover {
-  background: #ddd;
-  color: black;
-}
+      #myBtn:hover {
+        background: #ddd;
+        color: black;
+      }
 
-.btn {
-  background-color: blue;
-  border: none;
-  color: white;
-  padding: 12px 16px;
-  font-size: 16px;
-  cursor: pointer;
-}
+      .btn {
+        background-color: blue;
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
+      }
 
-</style>
-  </head>
-  <body style="text-align:center">
-  
-  <video style="text-align:center" autoplay muted loop id="myVideo">
-  <source src="welcome.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
-</video>
-    
-    <div class="content" style="min-height:100%; text-align:center">
-    <br>
-    <h1 style="text-align:center; color:white">TranslateLicious</h1>
-    <br/><br/>
-    <div class="container">
-      <div class="panel source">
-      <style>
       /*the container must be positioned relative:*/
-.custom-select{
-  /* wrapper style */
-  position: relative;
-  display:block;
-  max-width: 400px;
-  min-width: 180px;
-  margin:0 auto;
-  font-style:italic;
-  font-family;verdana;
-  font-weight:bold;
-}
+      .custom-select {
+        /* wrapper style */
+        position: relative;
+        display: block;
+        max-width: 400px;
+        min-width: 180px;
+        margin: 0 auto;
+        font-style: italic;
+        font-family: verdana;
+        font-weight: bold;
+      }
 
-.custom-select select {
-  display: none; /*hide original SELECT element:*/
-}
+      .custom-select select {
+        display: none; /*hide original SELECT element:*/
+      }
 
-.select-selected {
-  background-color: coral;
-}
+      .select-selected {
+        background-color: coral;
+      }
 
-/*style the arrow inside the select element:*/
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
+      /*style the arrow inside the select element:*/
+      .select-selected:after {
+        position: absolute;
+        content: '';
+        top: 14px;
+        right: 10px;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: #fff transparent transparent transparent;
+      }
 
-/*point the arrow upwards when the select box is open (active):*/
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-}
+      /*point the arrow upwards when the select box is open (active):*/
+      .select-selected.select-arrow-active:after {
+        border-color: transparent transparent #fff transparent;
+        top: 7px;
+      }
 
-/*style the items (options), including the selected item:*/
-.select-items div,.select-selected {
-  color: #ffffff;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-  user-select: none;
-}
+      /*style the items (options), including the selected item:*/
+      .select-items div,
+      .select-selected {
+        color: #ffffff;
+        padding: 8px 16px;
+        border: 1px solid transparent;
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+        cursor: pointer;
+        user-select: none;
+      }
 
-/*style items (options):*/
-.select-items {
-  position: absolute;
-  background-color: crimson;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
+      /*style items (options):*/
+      .select-items {
+        position: absolute;
+        background-color: crimson;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+      }
 
-/*hide the items when the select box is closed:*/
-.select-hide {
-  display: none;
-}
+      /*hide the items when the select box is closed:*/
+      .select-hide {
+        display: none;
+      }
 
-.select-items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-</style>
-<div class="custom-select" align="center" style="width:200px;text-align:center">
-        <select id="source-language">
-          <option value="ar">Arabic/العربية</option>
-          <option value="zh-cn">Chinese (Mandarin)/中文（國語）</option>
-          <option value="da">Danish/Dansk</option>
-          <option value="nl">Dutch/Nederlands</option>
-          <option value="en" selected>English</option>
-          <option value="fr">French/Français</option>
-          <option value="de">German/Deutsch</option>
-          <option value="is">Icelandic/Íslenska</option>
-          <option value="it">Italian/Italiano</option>
-          <option value="ja">Japanese/日本語</option>
-          <option value="ko">Korean/한국어</option>
-          <option value="nb">Norwegian/Norsk Bokmål</option>
-          <option value="pl">Polish/Polski</option>
-          <option value="pt">Portuguese/Português</option>
-          <option value="ro">Romanian/Română</option>
-          <option value="ru">Russian/Русский</option>
-          <option value="es">Spanish/Español</option>
-          <option value="sv">Swedish/Svenska</option>
-          <option value="tr">Turkish/Türkçe</option>
-          <option value="cy">Welsh/Cymraeg</option>
-          <option value="ca">Catalan/Català</option>
-        </select>
-        </div>
-        <textarea id="source" cols="30" rows="10" style="background-color:navyblue;font-family:verdana;color:yellow; font-size:1.1em">
-How are you doing? How to enhance the functionality of translation using this tool?</textarea>
-        <div>
-          <button style="border-radius: 54%" id="source-speech">
-            <img
-              src="speech.png"
-              alt="Speaking person."
-              class="icon"
-              
-            />
-          </button>
-          <!--<button id="source-save-mp3">save as mp3</button>
+      .select-items div:hover,
+      .same-as-selected {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <video autoplay muted loop id="myVideo">
+      <source src="welcome.mp4" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+
+    <div class="content">
+      <br />
+      <h1>TranslateLicious</h1>
+      <br /><br />
+      <div class="container">
+        <div class="panel source">
+          <div class="custom-select" align="center">
+            <select id="source-language">
+              <option value="ar">Arabic/العربية</option>
+              <option value="zh-cn">Chinese (Mandarin)/中文（國語）</option>
+              <option value="da">Danish/Dansk</option>
+              <option value="nl">Dutch/Nederlands</option>
+              <option value="en" selected>English</option>
+              <option value="fr">French/Français</option>
+              <option value="de">German/Deutsch</option>
+              <option value="is">Icelandic/Íslenska</option>
+              <option value="it">Italian/Italiano</option>
+              <option value="ja">Japanese/日本語</option>
+              <option value="ko">Korean/한국어</option>
+              <option value="nb">Norwegian/Norsk Bokmål</option>
+              <option value="pl">Polish/Polski</option>
+              <option value="pt">Portuguese/Português</option>
+              <option value="ro">Romanian/Română</option>
+              <option value="ru">Russian/Русский</option>
+              <option value="es">Spanish/Español</option>
+              <option value="sv">Swedish/Svenska</option>
+              <option value="tr">Turkish/Türkçe</option>
+              <option value="cy">Welsh/Cymraeg</option>
+              <option value="ca">Catalan/Català</option>
+            </select>
+          </div>
+          <textarea
+            id="source"
+            cols="30"
+            rows="10"
+            style="background-color:navyblue;font-family:verdana;color:yellow; font-size:1.1em"
+          >
+How are you doing? How to enhance the functionality of translation using this tool?</textarea
+          >
+          <div>
+            <button style="border-radius: 54%" id="source-speech">
+              <img src="speech.png" alt="Speaking person." class="icon" />
+            </button>
+            <!--<button id="source-save-mp3">save as mp3</button>
           <button id="source-save-wav">save as wav</button>
           <button id="source-save-ogg">save as ogg</button>-->
-          <button style="border-radius: 54%" id="dictate">
-            <img
-              src="microphone.png"
-              alt="Microphone."
-              class="icon"
-              
-            />
-          </button>
+            <button style="border-radius: 54%" id="dictate">
+              <img src="microphone.png" alt="Microphone." class="icon" />
+            </button>
+          </div>
         </div>
-      </div>
-      <button id="translate" style="border-radius: 54%">
-        <img
-          src="globe.jpg"
-          alt='Globe of "Translate" in various languages with world map overlaid.'
-          class="icon"
-        />
-      </button>
-     
-      <div class="panel translation">
-       <div class="custom-select" style="width:200px;text-align:center">
-        <select id="target-language">
-          <option value="ar">Arabic/العربية</option>
-          <option value="zh-cn">Chinese (Mandarin)/中文（國語）</option>
-          <option value="da">Danish/Dansk</option>
-          <option value="nl">Dutch/Nederlands</option>
-          <option value="en">English</option>
-          <option value="fr">French/Français</option>
-          <option value="de">German/Deutsch</option>
-          <option value="is">Icelandic/Íslenska</option>
-          <option value="it">Italian/Italiano</option>
-          <option value="ja">Japanese/日本語</option>
-          <option value="ko">Korean/한국어</option>
-          <option value="nb">Norwegian/Norsk Bokmål</option>
-          <option value="pl" selected>Polish/Polski</option>
-          <option value="pt">Portuguese/Português</option>
-          <option value="ro">Romanian/Română</option>
-          <option value="ru">Russian/Русский</option>
-          <option value="es">Spanish/Español</option>
-          <option value="sv">Swedish/Svenska</option>
-          <option value="tr">Turkish/Türkçe</option>
-          <option value="cy">Welsh/Cymraeg</option>
-          <option value="ca">Catalan/Català</option>
-        </select>
-        </div>
-        <textarea id="translated" cols="30" rows="10" style="background-color:lightyellow;font-family:verdana;color:blue; font-size:1.1em" readonly></textarea>
-        <div>
-          <button id="translated-speech" style="border-radius: 54%">
-            <img
-              src="speech.png"
-              alt="Speaking person."
-              class="icon"
-            />
-          </button>
-         <!-- <button id="translated-save-mp3">save as mp3</button>
+        <button id="translate" style="border-radius: 54%">
+          <img
+            src="globe.jpg"
+            alt='Globe of "Translate" in various languages with world map overlaid.'
+            class="icon"
+          />
+        </button>
+
+        <div class="panel translation">
+          <div class="custom-select" style="width:200px;text-align:center">
+            <select id="target-language">
+              <option value="ar">Arabic/العربية</option>
+              <option value="zh-cn">Chinese (Mandarin)/中文（國語）</option>
+              <option value="da">Danish/Dansk</option>
+              <option value="nl">Dutch/Nederlands</option>
+              <option value="en">English</option>
+              <option value="fr">French/Français</option>
+              <option value="de">German/Deutsch</option>
+              <option value="is">Icelandic/Íslenska</option>
+              <option value="it">Italian/Italiano</option>
+              <option value="ja">Japanese/日本語</option>
+              <option value="ko">Korean/한국어</option>
+              <option value="nb">Norwegian/Norsk Bokmål</option>
+              <option value="pl" selected>Polish/Polski</option>
+              <option value="pt">Portuguese/Português</option>
+              <option value="ro">Romanian/Română</option>
+              <option value="ru">Russian/Русский</option>
+              <option value="es">Spanish/Español</option>
+              <option value="sv">Swedish/Svenska</option>
+              <option value="tr">Turkish/Türkçe</option>
+              <option value="cy">Welsh/Cymraeg</option>
+              <option value="ca">Catalan/Català</option>
+            </select>
+          </div>
+          <textarea
+            id="translated"
+            cols="30"
+            rows="10"
+            style="background-color:lightyellow;font-family:verdana;color:blue; font-size:1.1em"
+            readonly
+          ></textarea>
+          <div>
+            <button id="translated-speech" style="border-radius: 54%">
+              <img src="speech.png" alt="Speaking person." class="icon" />
+            </button>
+            <!-- <button id="translated-save-mp3">save as mp3</button>
           <button id="translated-save-wav">save as wav</button>
           <button id="translated-save-ogg">save as ogg</button>-->
+          </div>
         </div>
       </div>
-    </div>
-    <br/>
-    <button id="myBtn" style="background-color:yellow; color:blue" onclick="myFunction()">Pause</button>
+      <br />
+      <button
+        id="myBtn"
+        style="background-color:yellow; color:blue"
+        onclick="myFunction()"
+      >
+        Pause
+      </button>
     </div>
     <script>
       const languages = {
         ar: ['ar', 'arb'],
-        'zh-cn': ['zh-cn', 'cmn-CN'],
+        'zh-cn': ['zh-tw', 'cmn-CN'],
         da: ['da', 'da-DK'],
         nl: ['nl', 'nl-NL'],
         en: ['en', 'en-US'],
@@ -324,19 +314,38 @@ How are you doing? How to enhance the functionality of translation using this to
         ca: ['ca', 'ca-CA']
       }
 
+      // Tell the browser to prepare the list of voices early
+      speechSynthesis.getVoices()
+
       function handleSpeech (speechBtn, textarea, language) {
         speechBtn.addEventListener('click', () => {
+          let locale = languages[language.value][1]
+
           const audio = new Audio()
           audio.src =
             'https://synthesis-service.scratch.mit.edu/synth?' +
             new URLSearchParams({
-              locale: languages[language.value][1],
+              locale,
               gender: 'female',
               text: textarea.value
             })
           audio.controls = true
-          audio.autoplay = true
           textarea.parentNode.append(audio)
+
+          if (locale === 'cmn-CN') {
+            locale = 'zh-TW'
+          }
+          const voice = speechSynthesis
+            .getVoices()
+            .find(
+              voice =>
+                voice.lang === locale ||
+                voice.lang.slice(0, 2) === locale.slice(0, 2)
+            )
+          const utterance = new SpeechSynthesisUtterance(textarea.value)
+          utterance.lang = locale
+          utterance.voice = voice
+          window.speechSynthesis.speak(utterance)
         })
       }
 
@@ -366,101 +375,103 @@ How are you doing? How to enhance the functionality of translation using this to
         document.getElementById('translated'),
         document.getElementById('target-language')
       )
-    </script>
-    <script>
-    var video = document.getElementById("myVideo");
-var btn = document.getElementById("myBtn");
 
-function myFunction() {
-  if (video.paused) {
-    video.play();
-    btn.innerHTML = "Pause";
-  } else {
-    video.pause();
-    btn.innerHTML = "Play";
-  }
-}
-</script>
+      var video = document.getElementById('myVideo')
+      var btn = document.getElementById('myBtn')
 
-<script>
-var x, i, j, l, ll, selElmnt, a, b, c;
-/*look for any elements with the class "custom-select":*/
-x = document.getElementsByClassName("custom-select");
-l = x.length;
-for (i = 0; i < l; i++) {
-  selElmnt = x[i].getElementsByTagName("select")[0];
-  ll = selElmnt.length;
-  /*for each element, create a new DIV that will act as the selected item:*/
-  a = document.createElement("DIV");
-  a.setAttribute("class", "select-selected");
-  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-  x[i].appendChild(a);
-  /*for each element, create a new DIV that will contain the option list:*/
-  b = document.createElement("DIV");
-  b.setAttribute("class", "select-items select-hide");
-  for (j = 1; j < ll; j++) {
-    /*for each option in the original select element,
+      function myFunction () {
+        if (video.paused) {
+          video.play()
+          btn.innerHTML = 'Pause'
+        } else {
+          video.pause()
+          btn.innerHTML = 'Play'
+        }
+      }
+
+      var x, i, j, l, ll, selElmnt, a, b, c
+      /*look for any elements with the class "custom-select":*/
+      x = document.getElementsByClassName('custom-select')
+      l = x.length
+      for (i = 0; i < l; i++) {
+        selElmnt = x[i].getElementsByTagName('select')[0]
+        ll = selElmnt.length
+        /*for each element, create a new DIV that will act as the selected item:*/
+        a = document.createElement('DIV')
+        a.setAttribute('class', 'select-selected')
+        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML
+        x[i].appendChild(a)
+        /*for each element, create a new DIV that will contain the option list:*/
+        b = document.createElement('DIV')
+        b.setAttribute('class', 'select-items select-hide')
+        for (j = 1; j < ll; j++) {
+          /*for each option in the original select element,
     create a new DIV that will act as an option item:*/
-    c = document.createElement("DIV");
-    c.innerHTML = selElmnt.options[j].innerHTML;
-    c.addEventListener("click", function(e) {
-        /*when an item is clicked, update the original select box,
+          c = document.createElement('DIV')
+          c.innerHTML = selElmnt.options[j].innerHTML
+          c.addEventListener('click', function (e) {
+            /*when an item is clicked, update the original select box,
         and the selected item:*/
-        var y, i, k, s, h, sl, yl;
-        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-        sl = s.length;
-        h = this.parentNode.previousSibling;
-        for (i = 0; i < sl; i++) {
-          if (s.options[i].innerHTML == this.innerHTML) {
-            s.selectedIndex = i;
-            h.innerHTML = this.innerHTML;
-            y = this.parentNode.getElementsByClassName("same-as-selected");
-            yl = y.length;
-            for (k = 0; k < yl; k++) {
-              y[k].removeAttribute("class");
+            var y, i, k, s, h, sl, yl
+            s = this.parentNode.parentNode.getElementsByTagName('select')[0]
+            sl = s.length
+            h = this.parentNode.previousSibling
+            for (i = 0; i < sl; i++) {
+              if (s.options[i].innerHTML == this.innerHTML) {
+                s.selectedIndex = i
+                h.innerHTML = this.innerHTML
+                y = this.parentNode.getElementsByClassName('same-as-selected')
+                yl = y.length
+                for (k = 0; k < yl; k++) {
+                  y[k].removeAttribute('class')
+                }
+                this.setAttribute('class', 'same-as-selected')
+                break
+              }
             }
-            this.setAttribute("class", "same-as-selected");
-            break;
+            h.click()
+          })
+          b.appendChild(c)
+        }
+        x[i].appendChild(b)
+        a.addEventListener('click', function (e) {
+          /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+          e.stopPropagation()
+          closeAllSelect(this)
+          this.nextSibling.classList.toggle('select-hide')
+          this.classList.toggle('select-arrow-active')
+        })
+      }
+      function closeAllSelect (elmnt) {
+        /*a function that will close all select boxes in the document,
+  except the current select box:*/
+        var x,
+          y,
+          i,
+          xl,
+          yl,
+          arrNo = []
+        x = document.getElementsByClassName('select-items')
+        y = document.getElementsByClassName('select-selected')
+        xl = x.length
+        yl = y.length
+        for (i = 0; i < yl; i++) {
+          if (elmnt == y[i]) {
+            arrNo.push(i)
+          } else {
+            y[i].classList.remove('select-arrow-active')
           }
         }
-        h.click();
-    });
-    b.appendChild(c);
-  }
-  x[i].appendChild(b);
-  a.addEventListener("click", function(e) {
-      /*when the select box is clicked, close any other select boxes,
-      and open/close the current select box:*/
-      e.stopPropagation();
-      closeAllSelect(this);
-      this.nextSibling.classList.toggle("select-hide");
-      this.classList.toggle("select-arrow-active");
-    });
-}
-function closeAllSelect(elmnt) {
-  /*a function that will close all select boxes in the document,
-  except the current select box:*/
-  var x, y, i, xl, yl, arrNo = [];
-  x = document.getElementsByClassName("select-items");
-  y = document.getElementsByClassName("select-selected");
-  xl = x.length;
-  yl = y.length;
-  for (i = 0; i < yl; i++) {
-    if (elmnt == y[i]) {
-      arrNo.push(i)
-    } else {
-      y[i].classList.remove("select-arrow-active");
-    }
-  }
-  for (i = 0; i < xl; i++) {
-    if (arrNo.indexOf(i)) {
-      x[i].classList.add("select-hide");
-    }
-  }
-}
-/*if the user clicks anywhere outside the select box,
+        for (i = 0; i < xl; i++) {
+          if (arrNo.indexOf(i)) {
+            x[i].classList.add('select-hide')
+          }
+        }
+      }
+      /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
-document.addEventListener("click", closeAllSelect);
-</script>
+      document.addEventListener('click', closeAllSelect)
+    </script>
   </body>
 </html>

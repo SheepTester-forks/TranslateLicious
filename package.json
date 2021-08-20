@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "obfuscate": "terser -cm --toplevel main.js > main.min.js && postcss styles.css > styles.min.css && sed 's/\\(styles\\|main\\)\\.\\(css\\|js\\)/\\1.min.\\2/g' index.php > index.min.php"
+  },
+  "devDependencies": {
+    "cssnano": "^5.0.8",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "terser": "^5.7.1"
+  }
+}
