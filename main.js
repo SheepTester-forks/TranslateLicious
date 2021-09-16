@@ -64,13 +64,14 @@ function handleSpeech (
   rate
 ) {
   optionsWrapper.style.display = 'none'
+  let audio = new Audio()
+  audio.controls = true
   speechBtn.addEventListener('click', () => {
     const locale = languages[language.value][1]
     if (locale === null) {
       alert('tts is unavailable for languages that are not in the list')
       return
     }
-    const audio = new Audio()
     audio.src =
       'https://synthesis-service.scratch.mit.edu/synth?' +
       new URLSearchParams({
@@ -78,7 +79,6 @@ function handleSpeech (
         gender: 'female',
         text: textarea.value
       })
-    audio.controls = true
     textarea.parentNode.append(audio)
 
     const voice = speechSynthesis
