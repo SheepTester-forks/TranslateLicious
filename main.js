@@ -224,3 +224,14 @@ except the current select box:*/
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener('click', closeAllSelect)
+
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition
+document.getElementById('dictate').addEventListener('click', () => {
+  const recognition = new SpeechRecognition()
+  recognition.lang = document.getElementById('source-language').value
+  recognition.start()
+  recognition.addEventListener('result', event => {
+    document.getElementById('source').value = event.results[0][0].transcript
+  })
+})
